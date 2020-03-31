@@ -1,0 +1,372 @@
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
+\usepackage{geometry}
+\usepackage{longtable,booktabs}
+\usepackage{enumitem}
+\usepackage{arydshln}
+\usepackage{attachfile}
+\usepackage{array}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\input meta.tex
+
+\newcommand{\attachmentsUrl}{https://github.com/\gitorg/\lsstDocType-\lsstDocNum/blob/\gitref/attachments}
+\providecommand{\tightlist}{
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+\setcounter{tocdepth}{4}
+
+\begin{document}
+
+\def\milestoneName{Access to Processed HSC Public Data in the LSP}
+\def\milestoneId{LDM-503-xxx}
+\def\product{LSP Services}
+
+\setDocCompact{true}
+
+\title{LDM-503-xxx: Access to Processed HSC Public Data in the LSP Test Plan and Report}
+\setDocRef{\lsstDocType-\lsstDocNum}
+\date{\vcsdate}
+\author{ Gregory Dubois-Felsmann }
+
+\input{history_and_info.tex}
+
+
+\setDocAbstract{
+This is the test plan and report for LDM-503-xxx (Access to Processed HSC Public Data in the LSP),
+an LSST milestone pertaining to the Data Management Subsystem.
+}
+
+
+\maketitle
+
+\section{Introduction}
+\label{sect:intro}
+
+
+\subsection{Objectives}
+\label{sect:objectives}
+
+ Verify the deployment of Rubin/LSST-processed HSC public release data,
+including at a minimum DRP-style products such as an Object-like
+catalog, coadded images, and calibrated single-epoch images, with image
+metadata, and access to this data through all three LSP Aspects. ~This
+includes Notebook Aspect access to catalogs, images, and image cutouts,
+and Portal Aspect access (via TAP) to catalogs and image metadata
+(ObsTAP-style) and through that to images. ~External API Aspect data
+access is not separately under test, as the API Aspect services are
+exercised by the other tests, and the ability to access them externally
+with authentication has been demonstrated previously.
+
+
+
+\subsection{System Overview}
+\label{sect:systemoverview}
+
+ The system under test is an instance of the LSP, including Notebook
+Aspect, Portal Aspect, API Aspect services, back-end databases, and a
+Gen3 Butler repository on accessible mass storage.
+
+
+\subsection{Document Overview}
+\label{sect:docoverview}
+
+This document was generated from Jira, obtaining the relevant information from the
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P70}{LVV-P70}
+~Jira Test Plan and related Test Cycles (
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C152}{LVV-C152}
+).
+
+Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}),
+the applicable documentation, and explains how this document is organized.
+Section \ref{sect:testplan} provides additional information about the test plan, like for example the configuration
+used for this test or related documentation.
+Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
+
+Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary},
+an overall assessment statement and suggestions for possible improvements.
+Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
+
+The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P70}{LVV-P70} in Jira is \textbf{ Draft }.
+
+\subsection{References}
+\label{sect:references}
+\renewcommand{\refname}{}
+\bibliography{lsst,refs,books,refs_ads,local}
+
+
+\newpage
+\section{Test Plan Details}
+\label{sect:testplan}
+
+
+\subsection{Data Collection}
+
+  Observing is not required for this test campaign.
+
+\subsection{Verification Environment}
+\label{sect:hwconf}
+  An instance of the LSP at the LDF will be used.
+
+  \subsection{Entry Criteria}
+  Confirmation from the relevant teams of the deployment of the test
+dataset.
+
+
+
+\subsection{Related Documentation}
+
+The documentation related to this test campaign should be provided in the following DocuShare Collection
+(as per Verification Artifacts in Jira test plan LVV-P70).
+
+\begin{itemize}
+\item DocuShare Collection Not Specified
+\end{itemize}
+
+
+
+\subsection{PMCS Activity}
+
+Primavera milestones related to the test campaign.
+
+\begin{itemize}
+\item None
+\end{itemize}
+
+
+\newpage
+\section{Personnel}
+\label{sect:personnel}
+
+The personnel involved in the test campaign is shown in the following table.
+
+{\small
+\begin{longtable}{p{3cm}p{3cm}p{3cm}p{6cm}}
+\hline
+\multicolumn{2}{r}{T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P70}{LVV-P70} owner:} &
+\multicolumn{2}{l}{\textbf{ Gregory Dubois-Felsmann } }\\\hline
+\multicolumn{2}{r}{T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C152}{LVV-C152} owner:} &
+\multicolumn{2}{l}{\textbf{
+Gregory Dubois-Felsmann}
+} \\\hline
+\textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1825}{LVV-T1825}
+& {\small Gregory Dubois-Felsmann } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small Someone with credentials allowing access to the instance of the LSP at
+the LDF on which the data are deployed. }
+\medskip
+\end{minipage}
+\\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1824}{LVV-T1824}
+& {\small Gregory Dubois-Felsmann } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small  }
+\medskip
+\end{minipage}
+\\ \hline
+\end{longtable}
+}
+
+\newpage
+
+\section{Test Campaign Overview}
+\label{sect:overview}
+
+\subsection{Summary}
+\label{sect:summarytable}
+
+{\small
+\begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
+\toprule
+\multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P70}{LVV-P70}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-xxx: Access to Processed HSC Public Data in the LSP }} & Draft \\\hline
+\multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C152}{LVV-C152}:} &
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-xxx - Access to Processed HSC Public Data in the LSP }} & Not Executed \\\hline
+\textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1825}{LVV-T1825}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
+
+\medskip
+\end{minipage}
+&
+\\\hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1824}{LVV-T1824}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
+
+\medskip
+\end{minipage}
+&
+\\\hline
+\caption{Test Campaign Summary}
+\label{table:summary}
+\end{longtable}
+}
+
+\subsection{Overall Assessment}
+\label{sect:overallassessment}
+
+Not yet available.
+
+\subsection{Recommended Improvements}
+\label{sect:recommendations}
+
+Not yet available.
+
+\newpage
+\section{Detailed Test Results}
+\label{sect:detailedtestresults}
+
+\subsection{Test Cycle LVV-C152 }
+
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C152}{LDM-503-xxx - Access to Processed HSC Public Data in the LSP}} in Jira.
+
+Test Cycle name: LDM-503-xxx - Access to Processed HSC Public Data in the LSP\\
+Status: Not Executed
+
+This test cycle verifies the deployment of Rubin/LSST-processed HSC
+public release data, including at a minimum DRP-style products such as
+an Object-like catalog, coadded images, and calibrated single-epoch
+images, with image metadata, and access to this data through all three
+LSP Aspects. ~This includes Notebook Aspect access to catalogs, images,
+and image cutouts, and Portal Aspect access (via TAP) to catalogs and
+image metadata (ObsTAP-style) and through that to images. ~External API
+Aspect data access is not specifically under test in this cycle, as the
+API Aspect services are exercised by the other tests, and the ability to
+access them externally has been demonstrated
+previously.\\[2\baselineskip]Access to single-epoch catalog data such as
+Source or ForcedSource, and access to AP-style products, including DIA*
+catalogs and difference images, are possible stretch goals. ~If adopted,
+they would be represented by additional test cases in the test cycle.
+
+\subsubsection{Software Version/Baseline}
+Not provided.
+
+\subsubsection{Configuration}
+Not provided.
+
+\subsubsection{Test Cases in LVV-C152 Test Cycle}
+
+\paragraph{ LVV-T1825 - Notebook Aspect access to processed HSC data in the LSP }\mbox{}\\
+
+Version \textbf{1}.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1825}{\textit{ LVV-T1825 } }
+test case in Jira.
+
+Verify the availability through the Notebook Aspect of a dataset of
+Rubin/LSST-processed HSC public release data, including DRP-style
+products such as an Object-like catalog, coadded images, and calibrated
+single-epoch images, with image metadata. ~\\[2\baselineskip]If
+additional data products are available, such as DIA* outputs or
+Source/ForcedSource, testing those should be represented by an
+additional stretch-goal test case.
+
+\textbf{ Preconditions}:\\
+Execution of a DRP-style processing of a TBD-sized collection of HSC
+data, up to the full HSC PDR2 dataset. ~Deployment of this dataset in
+databases accessible to an LSP instance, to a TAP service in that
+instance, to an image cutout (SODA) service, and in a Gen3 Butler
+repository accessible from a notebook.
+
+Execution status: {\bf Not Executed }
+
+Final comment:\\
+
+
+Detailed steps results:
+
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+\paragraph{ LVV-T1824 - Portal Aspect access to processed HSC data in the LSP }\mbox{}\\
+
+Version \textbf{1}.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1824}{\textit{ LVV-T1824 } }
+test case in Jira.
+
+Verify the availability through the Portal Aspect of a dataset of
+Rubin/LSST-processed HSC public release data, including DRP-style
+products such as an Object-like catalog, coadded images, and calibrated
+single-epoch images, with image metadata. ~Access will be based on TAP
+service of catalogs and image metadata (ObsTAP-style) and through that
+to images.\\[2\baselineskip]If additional data products are available,
+such as DIA* outputs or Source/ForcedSource, testing those should be
+represented by an additional stretch-goal test case.
+
+\textbf{ Preconditions}:\\
+Execution of a DRP-style processing of a TBD-sized collection of HSC
+data, up to the full HSC PDR2 dataset. ~Deployment of this dataset in
+databases accessible to an LSP instance and to a TAP service in that
+instance.
+
+Execution status: {\bf Not Executed }
+
+Final comment:\\
+
+
+Detailed steps results:
+
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+
+\input{appendix.tex}
+\end{document}
